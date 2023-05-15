@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.list-item {
+  display: grid;
+  gap: 2%;
+  grid-template-columns: repeat(2, 49%);
+}
+.list-item2 {
+  display: grid;
+  gap: 2%;
+  grid-template-columns: repeat(3, 32%);
+}
+.list-item img {
+  width: 100%;
+}
+
+.list-item2 img {
+  width: 100%;
+}
+
+img {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.products {
+  display: grid;
+  gap: 1%;
+  grid-template-columns: repeat(4, 24.25%);
+}
+
+.email {
+  display: flex;
+  width: 50%;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.detail img {
+  width: 100%;
+}
+
+svg {
+  fill: white;
+  width: 1.5rem;
+}
+
+.shop {
+  background-color: #e5f1f1;
+}
+
+.category {
+  display: grid;
+  gap: 5%;
+  grid-template-columns: 20% 75%;
+}

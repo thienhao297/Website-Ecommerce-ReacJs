@@ -1,0 +1,41 @@
+.header {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.logo {
+  font-size: 2rem;
+  color: white;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  margin: 0 1rem;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav a:hover,
+.nav a:active,
+.nav a.active {
+  color: #f8c471;
+}
+
+h2 {
+  font-weight: 500;
+  font-style: italic;
+}
