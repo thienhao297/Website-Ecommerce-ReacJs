@@ -8,11 +8,14 @@ import Products from "../Component/Products";
 import Shipping from "../Component/Shipping";
 
 import { popupActions } from "../store/popup";
+import { useState } from "react";
 
 const HomePage = () => {
   const dispatch = useDispatch();
 
   const isPopup = useSelector((state) => state.popup.isPopup);
+
+  const [productDetail, setProductDetail] = useState();
 
   const navigate = useNavigate();
 
@@ -20,9 +23,10 @@ const HomePage = () => {
     navigate("/shop");
   };
 
-  const showPopupHandler = (e) => {
+  const showPopupHandler = (e, name, price, img1, short_desc) => {
     e.preventDefault();
     dispatch(popupActions.show());
+    setProductDetail({ name: name, price: price, img: img1, desc: short_desc });
   };
 
   const hidePopupHandler = (e) => {
@@ -32,7 +36,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {isPopup && <Popup onClose={hidePopupHandler} />}
+      {isPopup && <Popup onClose={hidePopupHandler} onDetail={productDetail} />}
       <Banner onNavigate={navigateHandler} />
       <Categories onNavigate={navigateHandler} />
       <Products onShowPopup={showPopupHandler} />

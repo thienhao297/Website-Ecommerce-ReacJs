@@ -49,3 +49,31 @@ img:hover {
   display: flex;
   width: 50%;
 }
+
+.detail {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.detail img {
+  width: 100%;
+}
+
+svg {
+  fill: white;
+  width: 1.5rem;
+}
+
+.shop {
+  background-color: #e5f1f1;
+}
+
+.category {
+  display: grid;
+  gap: 5%;
+  grid-template-columns: 20% 75%;
+}
+
+.pointer {
+  cursor: pointer;
+}

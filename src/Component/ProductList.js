@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
+import List from "./List";
 
-const Products = (props) => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
 
   const fetchProductsHandler = useCallback(async () => {
@@ -49,35 +50,34 @@ const Products = (props) => {
   useEffect(() => {
     fetchProductsHandler();
   }, [fetchProductsHandler]);
+
   return (
-    <div className="fst-italic mb-5">
-      <p className="text-secondary mb-2">MADE THE HARD WAY</p>
-      <h3 className="mb-4">TOP TRENDING PRODUCTS</h3>
-      <div className="products">
-        {products.map((product) => (
-          <div key={product.id} className="text-center">
-            <img
-              src={product.img1}
-              width="100%"
-              className="pb-3"
-              alt={`${product.name}`}
-              onClick={(e) =>
-                props.onShowPopup(
-                  e,
-                  product.name,
-                  product.price,
-                  product.img1,
-                  product.short_desc
-                )
-              }
-            />
-            <p className="fs-5">{product.name}</p>
-            <p className="text-secondary">{product.price} VND</p>
+    <div className="category fst-italic">
+      <List />
+      <div>
+        <div className="d-flex justify-content-between mb-5">
+          <input placeholder="Enter Search Here!" className="p-2" />
+          <button>Default sorting</button>
+        </div>
+        <div>
+          <div className="products">
+            {products.map((product) => (
+              <div key={product.id} className="text-center">
+                <img
+                  src={product.img1}
+                  width="100%"
+                  className="pb-3"
+                  alt={`${product.name}`}
+                />
+                <p className="fs-5">{product.name}</p>
+                <p className="text-secondary">{product.price} VND</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Products;
+export default ProductList;
