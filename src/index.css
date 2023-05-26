@@ -50,12 +50,12 @@ img:hover {
   width: 50%;
 }
 
-.detail {
+.popup {
   display: grid;
   grid-template-columns: repeat(2, 50%);
 }
 
-.detail img {
+.popup img {
   width: 100%;
 }
 
@@ -75,5 +75,41 @@ svg {
 }
 
 .pointer {
+  cursor: pointer;
+  color: #8a8989;
+}
+
+.pointer:hover,
+.pointer.active {
+  color: #f8c471;
+}
+
+.img-detail {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.add {
+  border: none;
+  background-color: white;
+}
+
+.add svg {
+  fill: black;
+  width: 1rem;
+}
+
+.counter {
+  margin: 0;
+  align-self: center;
+}
+
+.signup {
+  width: 50%;
+  background-color: white;
+}
+
+.navlogin {
+  color: rgb(53, 122, 250);
   cursor: pointer;
 }

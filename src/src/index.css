@@ -73,3 +73,13 @@ svg {
   gap: 5%;
   grid-template-columns: 20% 75%;
 }
+
+.pointer {
+  cursor: pointer;
+  color: #8a8989;
+}
+
+.pointer:hover,
+.pointer.active {
+  color: #f8c471;
+}

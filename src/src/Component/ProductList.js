@@ -1,75 +1,175 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
+import useProduct from "../hook/use-products";
+import List from "./List";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
+  const products = useProduct();
 
-  const fetchProductsHandler = useCallback(async () => {
-    try {
-      const response = await fetch(
-        `https://firebasestorage.googleapis.com/v0/b/funix-subtitle.appspot.com/o/Boutique_products.json?alt=media&token=dc67a5ea-e3e0-479e-9eaf-5e01bcd09c74`
-      );
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
+  const [filter, setFilter] = useState(false);
+  const [filterList, setFilterList] = useState([]);
+  const [active, setActive] = useState("");
 
-      const data = await response.json();
+  const filterHanler = () => {
+    setFilter(false);
+    setActive("");
+  };
 
-      const fixPrice = data.map((product) => {
-        let priceArr = product.price.split("");
-        const length = priceArr.length;
-        const indexFix = [3, 6, 9, 12];
-        for (const index of indexFix)
-          if (index < length) priceArr.splice(length - index, 0, ".");
-        return { ...product, price: priceArr };
-      });
+  const iphoneHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "iphone"));
+    setActive("iphone");
+  };
 
-      const loadedProducts = [];
-
-      for (const key in fixPrice) {
-        if (key <= 7) {
-          loadedProducts.push({
-            id: fixPrice[key]._id.$oid,
-            name: fixPrice[key].name,
-            price: fixPrice[key].price,
-            category: fixPrice[key].category,
-            short_desc: fixPrice[key].short_desc,
-            long_desc: fixPrice[key].long_desc,
-            img1: fixPrice[key].img1,
-            img2: fixPrice[key].img2,
-            img3: fixPrice[key].img3,
-            img4: fixPrice[key].img4,
-          });
-        }
-      }
-
-      setProducts(loadedProducts);
-    } catch (error) {}
-  }, []);
-
-  useEffect(() => {
-    fetchProductsHandler();
-  }, [fetchProductsHandler]);
+  const ipadHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "ipad"));
+    setActive("ipad");
+  };
+  const macbookHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "macbook"));
+    setActive("macbook");
+  };
+  const airpodHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "airpod"));
+    setActive("airpod");
+  };
+  const watchHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "watch"));
+    setActive("watch");
+  };
+  const mouseHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "mouse"));
+    setActive("mouse");
+  };
+  const keyboardHanler = () => {
+    setFilter(true);
+    setFilterList(
+      products.filter((product) => product.category === "keyboard")
+    );
+    setActive("keyboard");
+  };
+  const otherHanler = () => {
+    setFilter(true);
+    setFilterList(products.filter((product) => product.category === "other"));
+    setActive("other");
+  };
 
   return (
     <div className="category fst-italic">
+      <nav>
+        <h4 className="mb-3">CATEGORIES</h4>
+        <div className="bg-dark">
+          <p className="text-white p-2 ps-4 m-0 fw-bold">APPLE</p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${active === "" ? "active" : ""}`}
+            onClick={filterHanler}
+          >
+            All
+          </p>
+        </div>
+        <div>
+          <p className="p-2 ps-4 m-0 shop fw-bold">IPHONE & MAC</p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "iphone" ? "active" : ""
+            }`}
+            onClick={iphoneHanler}
+          >
+            Iphone
+          </p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "ipad" ? "active" : ""
+            }`}
+            onClick={ipadHanler}
+          >
+            Ipad
+          </p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "macbook" ? "active" : ""
+            }`}
+            onClick={macbookHanler}
+          >
+            Macbook
+          </p>
+        </div>
+        <div>
+          <p className="p-2 ps-4 m-0 shop fw-bold">WIRELESS</p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "airpod" ? "active" : ""
+            }`}
+            onClick={airpodHanler}
+          >
+            Airpod
+          </p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "watch" ? "active" : ""
+            }`}
+            onClick={watchHanler}
+          >
+            Watch
+          </p>
+        </div>
+        <div>
+          <p className="p-2 ps-4 m-0 shop fw-bold">OTHER</p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "mouse" ? "active" : ""
+            }`}
+            onClick={mouseHanler}
+          >
+            Mouse
+          </p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "keyboard" ? "active" : ""
+            }`}
+            onClick={keyboardHanler}
+          >
+            Keyboard
+          </p>
+        </div>
+        <div>
+          <p
+            className={`p-2 ps-4 m-0 pointer ${
+              active === "other" ? "active" : ""
+            }`}
+            onClick={otherHanler}
+          >
+            Other
+          </p>
+        </div>
+      </nav>
       <div>
-        <h4>CATEGORIES</h4>
-        <p>APPLE</p>
-        <p>All</p>
-        <p>IPHONE & MAC</p>
-        <p>Iphone</p>
-        <p>Ipad</p>
-        <p>Macbook</p>
-        <p>WIRELESS</p>
-        <p>Airpod</p>
-        <p>Watch</p>
-        <p>OTHER</p>
-        <p>Mouse</p>
-        <p>Keyboard</p>
-        <p>Other</p>
-      </div>
-      <div>
-        <p>List</p>
+        <div className="d-flex justify-content-between mb-5">
+          <input placeholder="Enter Search Here!" className="p-2" />
+          <button>Default sorting</button>
+        </div>
+        {!filter && <List onProduct={products} />}
+        {filter && <List onProduct={filterList} />}
       </div>
     </div>
   );
