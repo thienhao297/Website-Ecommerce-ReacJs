@@ -8,15 +8,17 @@ const iconCart = (
 const Popup = (props) => {
   return (
     <Modal onClose={props.onClose}>
-      <div className="detail position-relative">
+      <div className="popup position-relative">
         <div>
           <img src={props.onDetail.img} alt={props.onDetail.name} />
         </div>
         <div>
           <div className="p-4 ">
             <h2>{props.onDetail.name}</h2>
-            <p>{props.onDetail.price} VND</p>
-            <p>{props.onDetail.desc}</p>
+            <p className="text-secondary fst-italic">
+              {props.onDetail.price} VND
+            </p>
+            <p className="text-secondary fst-italic">{props.onDetail.desc}</p>
           </div>
           <div className="ps-2">
             <button className="btn btn-secondary fst-italic rounded-0">
@@ -26,7 +28,7 @@ const Popup = (props) => {
         </div>
         <button
           type="button"
-          class="btn-close position-absolute top-0 end-0"
+          className="btn-close position-absolute top-0 end-0"
           aria-label="Close"
           onClick={props.onClose}
         ></button>

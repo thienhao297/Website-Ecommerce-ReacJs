@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useProduct from "../hook/use-products";
 import List from "./List";
+import PageList from "./PageList";
 
 const ProductList = () => {
   const products = useProduct();
@@ -164,12 +165,37 @@ const ProductList = () => {
         </div>
       </nav>
       <div>
-        <div className="d-flex justify-content-between mb-5">
-          <input placeholder="Enter Search Here!" className="p-2" />
-          <button>Default sorting</button>
+        <div className="d-flex justify-content-between align-items-center mb-5">
+          <div>
+            <input placeholder="Enter Search Here!" className="p-2" />
+          </div>
+          <div>
+            {/* Vì đề bài không yêu cầu nên button sort chưa hoàn thiện chức năng chỉ tạo demo, tương tự button tới và lui trong list */}
+            <button>
+              Default sorting
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
-        {!filter && <List onProduct={products} />}
-        {filter && <List onProduct={filterList} />}
+        <div className="pb-4">
+          {!filter && <List onProduct={products} />}
+          {filter && <List onProduct={filterList} />}
+          {!filter && <PageList onProduct={products} />}
+          {filter && <PageList onProduct={filterList} />}
+        </div>
       </div>
     </div>
   );
