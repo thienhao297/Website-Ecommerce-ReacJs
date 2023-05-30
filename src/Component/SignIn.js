@@ -46,7 +46,7 @@ export default function SignIn(props) {
       setAccExist(false);
       return;
     }
-    console.log("ok");
+    props.onLogin();
   };
 
   return (

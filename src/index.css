@@ -113,3 +113,66 @@ svg {
   color: rgb(53, 122, 250);
   cursor: pointer;
 }
+
+.icon-nav {
+  fill: #8a8989;
+}
+
+.shopping {
+  display: grid;
+  gap: 3%;
+  grid-template-columns: 70% 27%;
+}
+
+th img {
+  width: 5rem;
+}
+
+.coupon {
+  width: 100%;
+  height: 3rem;
+}
+
+.cart-total {
+  height: fit-content;
+}
+
+.checkout {
+  display: grid;
+  gap: 2%;
+  grid-template-columns: 65% 33%;
+}
+
+.order {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.mes {
+  position: fixed;
+  bottom: 10vh;
+  right: 20px;
+}
+
+.aa {
+  width: 5vh;
+}
+
+.client {
+  background-color: rgb(0, 153, 255);
+  padding: 3px;
+  border-radius: 0.2rem;
+}
+
+.admin {
+  background-color: rgb(219, 218, 218);
+  padding: 3px;
+  border-radius: 0.2rem;
+  width: fit-content;
+}
+
+.ipmes {
+  border: none;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}

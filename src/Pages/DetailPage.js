@@ -4,8 +4,14 @@ import AddToCart from "../Component/AddToCart";
 import Desc from "../Component/Desc";
 import List from "../Component/List";
 
+import { useDispatch } from "react-redux";
+
+import { cartActions } from "../store/cart";
+
 const DetailPage = () => {
   const params = useParams();
+  const dispatch = useDispatch();
+
   const [product, setProduct] = useState([]);
   const [desc, setDesc] = useState([]);
   const [related, setRelated] = useState([]);
@@ -73,6 +79,18 @@ const DetailPage = () => {
     fetchProductsHandler();
   }, [fetchProductsHandler]);
 
+  const addToCartHandler = (amount) => {
+    dispatch(
+      cartActions.addcart({
+        id: product.id,
+        img: product.img1,
+        name: product.name,
+        price: product.price,
+        amount: amount,
+      })
+    );
+  };
+
   return (
     <div className="fst-italic">
       <div className="popup mb-5 mt-5">
@@ -93,7 +111,7 @@ const DetailPage = () => {
             CATEGORY:{" "}
             <span className="text-secondary">{product.category}s</span>
           </p>
-          <AddToCart />
+          <AddToCart onAddToCart={addToCartHandler} />
         </div>
       </div>
       <p className="btn btn-secondary rounded-0 p-3 ps-4 pe-4">DESCRIPTION</p>

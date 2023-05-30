@@ -14,6 +14,9 @@ const counterSlide = createSlice({
     decrement(state) {
       if (state.counter > 0) state.counter--;
     },
+    reset(state) {
+      state.counter = 0;
+    },
   },
 });
 
